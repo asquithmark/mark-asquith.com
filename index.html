@@ -291,11 +291,11 @@
                     <a href="#services" class="btn-primary inline-flex items-center justify-center px-8 py-4 font-medium rounded-2xl transition duration-300">
                         Work with me
                     </a>
-                    <a href="mailto:contact@mark-asquith.com" class="btn-secondary inline-flex items-center justify-center px-8 py-4 text-white font-medium rounded-2xl transition duration-300">
+                    <a id="email-me-link" href="#" class="btn-secondary inline-flex items-center justify-center px-8 py-4 text-white font-medium rounded-2xl transition duration-300" aria-label="Email Mark">
                         Email me
                     </a>
                 </div>
-                
+
             </div>
         </div>
     </section>
@@ -306,7 +306,7 @@
             <p class="text-sm md:text-base text-gray-400 max-w-2xl mb-8">
                 A flexible set of ways to work together, from GEO and AI search to automation, training and ongoing advisory.
             </p>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
                 <article class="glass-chip rounded-2xl p-5 h-full flex flex-col gap-3">
                     <h3 class="text-base font-medium text-white">AI search, GEO and content</h3>
@@ -338,7 +338,7 @@
                 </article>
             </div>
 
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 <article class="glass-chip rounded-2xl p-5 h-full flex flex-col gap-3">
                     <h3 class="text-base font-medium text-white">Consulting and fractional support</h3>
@@ -403,7 +403,7 @@
                     Share a few lines about what you are working on, your timeline and what you hope AI can help with.
                 </p>
                 <div class="flex flex-wrap gap-6 items-center">
-                    <a href="mailto:contact@mark-asquith.com?subject=Project%20or%20training%20enquiry" class="btn-primary inline-flex items-center justify-center px-8 py-4 font-medium rounded-2xl transition duration-300">
+                    <a id="contact-mark-link" href="#" class="btn-primary inline-flex items-center justify-center px-8 py-4 font-medium rounded-2xl transition duration-300" aria-label="Contact Mark">
                         Contact Mark
                     </a>
                 </div>
@@ -417,7 +417,7 @@
                 <h2 class="font-display text-3xl font-light mb-2">Mark Asquith</h2>
                 <p class="text-gray-500 text-sm">Barcelona, Spain. AI consulting, automation, AI search and education.</p>
                 <p class="text-gray-500 text-sm">
-                    <a href="mailto:contact@mark-asquith.com" class="hover-underline-animation">contact@mark-asquith.com</a>
+                    <a id="footer-email-link" href="#" class="hover-underline-animation" aria-label="Email Mark">Email</a>
                 <br>
                 <br>
                 <a href="/privacy.html" class="hover-underline-animation text-gray-500 text-sm">
@@ -426,7 +426,7 @@
                 </p>
             </div>
 
-            
+
         </div>
         <div class="mt-12 text-center md:text-left text-xs text-gray-700 font-mono">
             &copy; 2025 Mark Asquith. All rights reserved.
@@ -492,6 +492,27 @@
                 });
             });
         }
+
+        (function () {
+            const user = "contact";
+            const domain = "mark-asquith.com";
+            const email = user + "@" + domain;
+            const encodedSubject = encodeURIComponent("Project or training enquiry");
+            const mailtoBasic = "mailto:" + email;
+            const mailtoWithSubject = mailtoBasic + "?subject=" + encodedSubject;
+
+            const emailMeLink = document.getElementById("email-me-link");
+            if (emailMeLink) emailMeLink.href = mailtoBasic;
+
+            const contactMarkLink = document.getElementById("contact-mark-link");
+            if (contactMarkLink) contactMarkLink.href = mailtoWithSubject;
+
+            const footerEmailLink = document.getElementById("footer-email-link");
+            if (footerEmailLink) {
+                footerEmailLink.href = mailtoBasic;
+                footerEmailLink.textContent = email;
+            }
+        })();
     </script>
 </body>
 </html>
